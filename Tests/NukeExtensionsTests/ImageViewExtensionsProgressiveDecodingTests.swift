@@ -40,7 +40,7 @@ class ImagePipelineProgressiveDecodingTests: XCTestCase {
         }
     }
 
-#if os(iOS) || os(tvOS) || os(macOS)
+#if os(iOS) || os(tvOS) || os(visionOS) || os(macOS)
 
     @MainActor
     func testParitalImagesAreDisplayed() {

@@ -2,7 +2,7 @@
 //
 // Copyright (c) 2015-2023 Alexander Grebenyuk (github.com/kean).
 
-#if os(iOS) || os(tvOS) || os(macOS)
+#if os(iOS) || os(tvOS) || os(visionOS) || os(macOS)
 
 import Foundation
 import CoreImage

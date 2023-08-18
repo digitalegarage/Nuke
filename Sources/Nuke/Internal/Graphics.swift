@@ -4,7 +4,7 @@
 
 import Foundation
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(visionOS) || os(watchOS)
 import UIKit
 #endif
 
@@ -33,7 +33,7 @@ struct ImageProcessingExtensions {
         guard let cgImage = image.cgImage else {
             return nil
         }
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(visionOS) || os(watchOS)
         let targetSize = targetSize.rotatedForOrientation(image.imageOrientation)
 #endif
         let scale = cgImage.size.getScale(targetSize: targetSize, contentMode: contentMode)
@@ -50,7 +50,7 @@ struct ImageProcessingExtensions {
         guard let cgImage = image.cgImage else {
             return nil
         }
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(visionOS) || os(watchOS)
         let targetSize = targetSize.rotatedForOrientation(image.imageOrientation)
 #endif
         let scale = cgImage.size.getScale(targetSize: targetSize, contentMode: .aspectFill)
@@ -242,7 +242,7 @@ extension CGImagePropertyOrientation {
 }
 #endif
 
-#if os(iOS) || os(tvOS) || os(watchOS)
+#if os(iOS) || os(tvOS) || os(visionOS) || os(watchOS)
 private extension CGSize {
     func rotatedForOrientation(_ imageOrientation: CGImagePropertyOrientation) -> CGSize {
         switch imageOrientation {
@@ -322,6 +322,9 @@ enum Screen {
 #elseif os(watchOS)
     /// Returns the current screen scale.
     static let scale: CGFloat = WKInterfaceDevice.current().screenScale
+#elseif os(visionOS)
+    /// Returns the current screen scale.
+    static let scale: CGFloat = 1
 #elseif os(macOS)
     /// Always returns 1.
     static let scale: CGFloat = 1
